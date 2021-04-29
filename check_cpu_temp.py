@@ -142,10 +142,13 @@ try:
     # print statuses + output
     if status == OK:
         print("OK - " + output)
+        sys.exit(0)
     elif status == WARN:
         print("WARNING - " + output)
+        sys.exit(0)
     elif status == CRIT:
         print("CRITICAL - " + output)
+        sys.exit(0)
 
 except Exception as e:
     print e
