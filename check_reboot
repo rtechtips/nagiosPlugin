@@ -5,7 +5,6 @@ import os, sys
 
 status = os.popen("uptime | cut -f4 -d ' '").read()
 status = int(status)
-print status
 if status > 2:
     status = str(status)
     print ("OK - " + status + " "+ "Days")
