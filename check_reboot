@@ -1,0 +1,21 @@
+#!/usr/bin/python
+# check minimum reboot time so you can fix your services. This in case reboot in 2 min so nagios can't check ping response .
+# This is only for check uptime if less then give you waring to fix issue. 
+import os, sys
+
+status = os.popen("uptime | cut -f4 -d ' '").read()
+status = int(status)
+print status
+if status > 2:
+    status = str(status)
+    print ("OK - " + status + " "+ "Days")
+    sys.exit(0)
+elif status < 2:
+    status = str(status)
+    print ("WARNING - " + status + " " + "Days")
+    sys.exit(1)
+elif status < 1:
+    status = str(status)
+    print ("CRITICAL - " + status + " " + "Days")
+    sys.exit(2)
+
